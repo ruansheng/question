@@ -10,10 +10,17 @@ app.engine('html', hbs.__express);
 app.get('/',index);
 
 /**
+* login filter
+*/
+app.use(function(req,res,next){
+	console.log('filter');
+	next();
+});
+
+/**
 * index
 */
 function index(req, res) {
-	//res.send('hello world !');
 	res.render('index',{'title':'question'});
 }
 
