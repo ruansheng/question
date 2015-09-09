@@ -1,5 +1,6 @@
 var express = require('express');
 var hbs = require('hbs');
+var bodyParser = require('body-parser');
 
 var routes = require('./routes/routes').routes;
 var logger = require('./lib/logger').logger;
@@ -13,6 +14,9 @@ app.set('port', process.ENV || 3000);
 app.use(express.static('public'));
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 /**
  * login filter
@@ -29,6 +33,12 @@ app.use(function(req,res,next){
  * http://localhost:port/login
  */
 app.get(routes.login, login_controller.login);
+
+/**
+ * login routes
+ * http://localhost:port/doLogin
+ */
+app.post(routes.doLogin, login_controller.doLogin);
 
 /**
  * index routes
