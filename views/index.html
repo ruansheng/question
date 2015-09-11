@@ -1,9 +1,118 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 <head>
-    <title>index</title>
+    <title>{{title}}</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        html,body{
+            height:100%;
+        }
+        a:link{
+            text-decoration:none;
+        }
+        .pup-nav-box{
+            position:fixed;
+            left: 0px;
+            top:0px;
+            width: 100px;
+            height: 100%;
+        }
+        .nav-title{
+            position: absolute;
+            letf:0px;
+            top:0px;
+            display:block;
+            width:100%;
+            height:35px;
+            line-height:35px;
+            text-align: center;
+            border-bottom:1px solid white;
+            cursor: pointer;
+        }
+        .nav-admin-head{
+            position: absolute;
+            left:20px;
+            top:45px;
+            width:50px;
+            height:50px;
+            cursor: pointer;
+        }
+        .nav-list{
+            position: absolute;
+            letf:0px;
+            top:130px;
+            width:100%;
+            color:white;
+            text-align:center;
+            cursor: pointer;
+        }
+        .nav-list li{
+            height: 40px;
+            line-height: 40px;
+            border-top:1px solid white;
+        }
+        .nav-list li a{
+            color:white;
+        }
+        .li-boder-botton{
+            border-bottom:1px solid white;
+        }
+
+        .nav-foot{
+            position: absolute;
+            letf:0px;
+            bottom:0px;
+            display:block;
+            width:100%;
+            height:35px;
+            line-height:35px;
+            text-align: center;
+            border-top:1px solid white;
+            cursor: pointer;
+        }
+        .nav-foot a{
+            color:white;
+        }
+        .hover-color{
+            background: #4F94CD;
+        }
+
+        .content{
+            width:100%;
+            height:100%;
+            margin-left:110px;
+        }
+    </style>
 </head>
 <body>
-welcome to {{title}} !
+<div class="pup-nav-box bg-primary">
+    <span class="nav-title">Question</span>
+    <img class="img-circle nav-admin-head" src="https://www.baidu.com/img/baidu_jgylogo3.gif" alt="...">
+    <ul class="nav-list">
+        <li><a href="/questions">问卷列表</a></li>
+        <li><a href="/question">题目列表</a></li>
+        <li><a href="/account">账号管理</a></li>
+        <li class="li-boder-botton"><a href="/course">使用帮助</a></li>
+    </ul>
+    <span class="nav-foot"><a href="/logout">退出</a></span>
+</div>
+<div class="content">
+    test
+</div>
+<script type="text/javascript" src="/js/jquery-2.0.0.min.js"></script>
+<script>
+    $(function() {
+        $('.nav-list li').hover(function(){
+            $(this).addClass('hover-color');
+        },function(){
+            $(this).removeClass('hover-color');
+        });
+    });
+</script>
 </body>
 </html>
