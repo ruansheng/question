@@ -3,5 +3,10 @@ exports.routes = {
     "doLogin" : "/doLogin",
     "index" : "/",
     "resetPass" : "/resetPass",
-    "savePass" : "/savePass"
+    "savePass" : "/savePass",
+    "questions" : "/questions",
+    "question" : "/question",
+    "manager" : "/manager",
+    "course" : "/course",
+    "error" : "/error"
 }

@@ -1,77 +1,69 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <title>login</title>
-        <link href="/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/css/style.css" rel="stylesheet">
-    </head>
+<head>
+    <title>data monitor</title>
+    <meta charset="utf-8"/>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        body{
+            background:gray;
+        }
+        .login-box{
+            height: 350px;
+            width:400px;
+            margin:0 auto;
+            margin-top:50px;
+            background:white;
+        }
+        .text-center{
+            text-align: center;
+        }
+        .item-login{
+            width:280px;
+            margin:0 auto;
+            margin-top:35px;
+        }
+        .item-button{
+            margin-left:44px;
+        }
+    </style>
+</head>
 <body>
-    <div class="container">
-    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 loginbox">
-        <div class="panel panel-info" >
-            <div class="panel-heading">
-                <div class="panel-title"> Sign In </div>
-                <div class="forgot-password"> <a href="#">Forgot password?</a> </div>
-            </div>
-            <div class="panel-body panel-pad">
-                <div id="login-alert" class="alert alert-danger col-sm-12 login-alert"></div>
-                    <form id="loginform" class="form-horizontal" role="form" action="/doLogin" method="post">
-                        <div class="input-group margT25">
-                            <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-user"></i>
-                            </span>
-                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
-                        </div>
-                        <div class="input-group margT25">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
-                        </div>
-                        <div class="input-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me 
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group margT10">
-                        <!-- Button -->
-                            <div class="col-sm-12 controls">
-                                <button class="btn btn-block btn-success" type="submit">Login </button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12 control">
-                                <div class="no-acc">
-                                    Don't have an account!
-                                    <a href="#"> Sign Up Here </a>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="panel panel-default login-box">
+    <div class="panel-heading text-center">问&nbsp;&nbsp;卷&nbsp;&nbsp;调&nbsp;&nbsp;查&nbsp;&nbsp;系&nbsp;&nbsp;统</div>
+    <div class="panel-body">
+        <div class="input-group item-login">
+            <span class="input-group-addon">账号</span>
+            <input type="text" class="form-control" placeholder="" id="username">
         </div>
+        <div class="input-group item-login">
+            <span class="input-group-addon">密码</span>
+            <input type="password" class="form-control" placeholder="" id="password">
+        </div>
+        <button class="btn btn-default item-login item-button" type="submit">登&nbsp;&nbsp;&nbsp;录</button>
     </div>
-    <script src="/js/jquery-2.0.0.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script>
-        $(function(){
-            $('button[type="submit"]').click(function(){
-                var url = '/doLogin';
-                var username = $("input[type='text']").val();
-                var password = $("input[type='password']").val();
-                if(username == '' || password == '') {
-                    alert('账号或密码不能为空');
+</div>
+<script type="text/javascript" src="/js/jquery-2.0.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script>
+    $(function(){
+        $('button[type="submit"]').click(function(){
+            var url = '/doLogin';
+            var username = $("#username").val();
+            var password = $("#password").val();
+            if(username == '' || password == '') {
+                alert('账号或密码不能为空');
+            }
+            $.post(url,{"username":username,"password":password},function(ret) {
+                if(ret['en'] != 200) {
+                    alert(ret['em']);
+                } else {
+                    window.location.href = '/';
                 }
-                $.post(url,{"username":username,"password":password},function(ret) {
-                    if(ret['en'] != 200) {
-                        alert(ret['em']);
-                    } else {
-                        window.location.href = '/';
-                    }
-                });
             });
         });
-    </script>
+    });
+</script>
 </body>
 </html>

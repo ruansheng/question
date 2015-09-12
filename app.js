@@ -6,6 +6,9 @@ var routes = require('./routes/routes').routes;
 var logger = require('./lib/logger').logger;
 var login_controller = require('./controller/login_controller').login_controller;
 var index_controller = require('./controller/index_controller').index_controller;
+var questions_controller = require('./controller/questions_controller').questions_controller;
+var question_controller = require('./controller/question_controller').question_controller;
+var manager_controller = require('./controller/manager_controller').manager_controller;
 
 var app = express();
 
@@ -29,22 +32,51 @@ app.use(function(req,res,next){
 */
 
 /**
+ * error routes
+ */
+app.get(routes.error, index_controller.error);
+
+/**
  * login routes
- * http://localhost:port/login
  */
 app.get(routes.login, login_controller.login);
 
 /**
  * login routes
- * http://localhost:port/doLogin
  */
 app.post(routes.doLogin, login_controller.doLogin);
 
 /**
  * index routes
- * http://localhost:port
  */
 app.get(routes.index, index_controller.index);
+
+/**
+ * questions routes
+ */
+app.get(routes.questions, questions_controller.questions);
+
+/**
+ * question routes
+ */
+app.get(routes.question, question_controller.question);
+
+/**
+ * manager routes
+ */
+app.get(routes.manager, manager_controller.managers);
+
+/**
+ * course routes
+ */
+app.get(routes.course, index_controller.course);
+
+/**
+ * error page
+ */
+app.use(function(req, res){
+	res.redirect('/error');
+});
 
 /**
  * listen
