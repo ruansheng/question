@@ -86,9 +86,23 @@
         }
 
         .content{
-            width:100%;
+            width:1100px;
             height:100%;
             margin-left:100px;
+        }
+        .create-questions-box{
+
+        }
+        .create-questions{
+            float:right;
+        }
+        .add-questions{
+            width:350px;
+            margin:0 auto;
+            margin-top:15px;
+        }
+        .add-button{
+            margin-left:44px;
         }
     </style>
 </head>
@@ -105,6 +119,11 @@
     <span class="nav-foot"><a href="/logout">退出</a></span>
 </div>
 <div class="content">
+    <div class="create-questions-box">
+        <button type="button" class="btn btn-primary btn-lg create-questions" data-toggle="modal" data-target="#myModal">
+            新建问卷调查
+        </button>
+    </div>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -128,7 +147,34 @@
         </tbody>
     </table>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">新建问卷调查<h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group add-questions">
+                    <span class="input-group-addon">标题</span>
+                    <input type="text" class="form-control" placeholder="" id="title">
+                </div>
+                <div class="input-group add-questions">
+                    <span class="input-group-addon">题数</span>
+                    <input type="password" class="form-control" placeholder="" id="qcount">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" src="/js/jquery-2.0.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <script>
     $(function() {
         $('.nav-list li').hover(function(){
